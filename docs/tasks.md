@@ -33,12 +33,12 @@
 
   - Requisito(s) relacionado(s): PRD — seção 5.2 (Regra de arquitetura) e seção 5.5 (Mapeamentos).
 
-- [ ] **Task 4 — Implementar utilitários de mapeamento (weather code, vento, is_day, dia da semana)**
+- [x] **Task 4 — Implementar utilitários de mapeamento (weather code, vento, is_day, dia da semana)**
 
   - Critério de aprovação:
-    - [ ] Função de conversão de `weather_code` (WMO) para descrição em pt-BR (tabela do PRD, seção 6.4);
-    - [ ] Função de conversão de direção do vento (graus → cardinal);
-    - [ ] Funções/flags para `is_day` e dia da semana.
+    - [x] Função de conversão de `weather_code` (WMO) para descrição em pt-BR (tabela do PRD, seção 6.4);
+    - [x] Função de conversão de direção do vento (graus → cardinal);
+    - [x] Funções/flags para `is_day` e dia da semana.
 
   - Requisito(s) relacionado(s): PRD — seção 5.5 e seção 6.4.
 
