@@ -15,12 +15,12 @@
 
   - Requisito(s) relacionado(s): PRD — seção 5.2 (Arquitetura e estrutura sugerida).
 
-- [ ] **Task 2 — Criar tipos TypeScript dos contratos da API Open-Meteo**
+- [x] **Task 2 — Criar tipos TypeScript dos contratos da API Open-Meteo**
 
   - Critério de aprovação:
-    - [ ] Interfaces/types criadas para geocoding (`results` com `name`, `latitude`, `longitude`, `country_code`, `timezone`, etc.);
-    - [ ] Interfaces/types criadas para forecast (`current_units`, `current` com as variáveis obrigatórias);
-    - [ ] Tipagem compila via `tsc` sem erros.
+    - [x] Interfaces/types criadas para geocoding (`results` com `name`, `latitude`, `longitude`, `country_code`, `timezone`, etc.);
+    - [x] Interfaces/types criadas para forecast (`current_units`, `current` com as variáveis obrigatórias);
+    - [x] Tipagem compila via `tsc` sem erros.
 
   - Requisito(s) relacionado(s): PRD — seções 5.3 e 5.4 (Contratos de API).
 
