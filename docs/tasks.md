@@ -24,12 +24,12 @@
 
   - Requisito(s) relacionado(s): PRD — seções 5.3 e 5.4 (Contratos de API).
 
-- [ ] **Task 3 — Implementar service layer com as funções do Open-Meteo**
+- [x] **Task 3 — Implementar service layer com as funções do Open-Meteo**
 
   - Critério de aprovação:
-    - [ ] Módulo de service criado com as funções de geocoding e forecast;
-    - [ ] Funções com assinaturas e tipos definidos conforme PRD;
-    - [ ] Componentes **não** realizam requisição direta à API.
+    - [x] Módulo de service criado com as funções de geocoding e forecast;
+    - [x] Funções com assinaturas e tipos definidos conforme PRD;
+    - [x] Componentes **não** realizam requisição direta à API.
 
   - Requisito(s) relacionado(s): PRD — seção 5.2 (Regra de arquitetura) e seção 5.5 (Mapeamentos).
 
