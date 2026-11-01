@@ -126,3 +126,12 @@
     - [x] Documentado no PRD (seção 6.2).
 
   - Requisito(s) relacionado(s): PRD — seção 6.2 (Componentes).
+
+- [x] **Task 15 — Corrigir mensagens do Empty State e reset ao submeter busca vazia**
+
+  - Critério de aprovação:
+    - [x] Empty State inicial exibe mensagem de orientação (não "cidade não encontrada");
+    - [x] Busca sem resultados exibe a mensagem de "cidade não encontrada";
+    - [x] Submeter o campo vazio limpa o resultado exibido e volta ao estado inicial.
+
+  - Requisito(s) relacionado(s): PRD — UC-02 / RF-02 (seção 3.2).

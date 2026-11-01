@@ -107,11 +107,12 @@ Ao submeter o nome da cidade, o sistema deve:
 | Vento — velocidade | `current.wind_speed_10m` | km/h |
 | Vento — direção | `current.wind_direction_10m` | ° (ver se 5.5) |
 
-### 3.2. UC-02 — Estado vazio (cidade não encontrada)
+### 3.2. UC-02 — Estado vazio (inicial e cidade não encontrada)
 
 - **O app deve ter um Empty State** (requisito obrigatório).
-- Exibir mensagem de "cidade não encontrada" / "não encontramos dados para esta cidade", com orientação para o usuário digitar outra cidade.
-- O Empty State deve estar presente também no carregamento inicial (antes de qualquer busca).
+- No carregamento inicial (antes de qualquer busca), exibir mensagem de orientação para o usuário digitar o nome de uma cidade.
+- Quando a busca não retornar dados, exibir mensagem de "cidade não encontrada" / "não encontramos dados para esta cidade", com orientação para o usuário digitar outra cidade.
+- Submeter o campo de busca vazio (por exemplo, após limpar o texto) deve limpar o resultado exibido e voltar ao estado inicial (Empty State inicial).
 
 ### 3.3. UC-03 — Interpretação do weather code (WMO)
 
@@ -265,7 +266,7 @@ Demais variáveis presentes na requisição (`precipitation`, `weather_code`) s�
 |---|---|
 | Loading | Spinner girando + mensagem durante a busca (geocoding + forecast) |
 | Sucesso | Sidebar + área principal preenchidas |
-| Vazio | **Empty state obrigatório** com mensagem e orientação |
+| Vazio | **Empty state obrigatório**: no estado inicial orienta a busca; após busca sem resultados exibe "cidade não encontrada" |
 | Erro | Mensagem amigável + ação de nova busca |
 
 ### 6.4. Weather codes (WMO)

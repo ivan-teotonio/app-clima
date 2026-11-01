@@ -13,6 +13,8 @@ const form = document.querySelector<HTMLFormElement>("#search-form");
 const input = document.querySelector<HTMLInputElement>("#city-search");
 const loading = document.querySelector<HTMLElement>("#loading");
 const emptyState = document.querySelector<HTMLElement>("#empty-state");
+const emptyStateTitle = document.querySelector<HTMLElement>("#empty-state-title");
+const emptyStateHint = document.querySelector<HTMLElement>("#empty-state-hint");
 const card = document.querySelector<HTMLElement>("#content");
 const sidebarTemperature = document.querySelector<HTMLElement>("#sidebar-temperature");
 const sidebarCityName = document.querySelector<HTMLElement>("#sidebar-city-name");
@@ -37,14 +39,6 @@ const hideLoading = () => {
   loading?.classList.add("hidden");
 };
 
-const showEmptyState = () => {
-  emptyState?.classList.remove("hidden");
-};
-
-const hideEmptyState = () => {
-  emptyState?.classList.add("hidden");
-};
-
 const showCard = () => {
   card?.classList.remove("hidden");
 };
@@ -65,10 +59,47 @@ const applyWeatherTheme = (weatherCode: number, dayFlag: number) => {
   document.body.dataset.daytime = isDay(dayFlag) ? "day" : "night";
 };
 
-// Estado inicial: Empty State visível, card oculto e tema neutro.
-showEmptyState();
-hideCard();
-clearWeatherTheme();
+/** Mensagens do Empty State: estado inicial (orientação) e busca sem resultados. */
+const EMPTY_STATE_MESSAGES = {
+  initial: {
+    title: "Busque uma cidade para começar.",
+    hint: "Digite o nome da cidade e pressione Enter.",
+  },
+  notFound: {
+    title: "Não encontramos dados para esta cidade.",
+    hint: "Verifique o nome digitado ou tente outra cidade.",
+  },
+} as const;
+
+type EmptyStateVariant = keyof typeof EMPTY_STATE_MESSAGES;
+
+const showEmptyState = (variant: EmptyStateVariant = "initial") => {
+  const message = EMPTY_STATE_MESSAGES[variant];
+  if (emptyStateTitle) {
+    emptyStateTitle.textContent = message.title;
+  }
+  if (emptyStateHint) {
+    emptyStateHint.textContent = message.hint;
+  }
+  emptyState?.classList.remove("hidden");
+};
+
+/** Estado inicial: Empty State de orientação, card oculto e tema neutro. */
+const resetView = () => {
+  clearWeatherTheme();
+  hideCard();
+  showEmptyState("initial");
+};
+
+/** Busca sem resultados: Empty State de "cidade não encontrada". */
+const showNotFoundState = () => {
+  clearWeatherTheme();
+  hideCard();
+  showEmptyState("notFound");
+};
+
+// Estado inicial da aplicação (antes de qualquer busca).
+resetView();
 
 /** Exibe os dados do forecast na sidebar e na área principal (substitui os placeholders "--"). */
 const renderWeather = (city: GeocodingResult, forecast: ForecastResponse) => {
@@ -95,8 +126,15 @@ const renderWeather = (city: GeocodingResult, forecast: ForecastResponse) => {
 form?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
+  if (isLoading) return;
+
   const cityName = input?.value.trim() ?? "";
-  if (!cityName || isLoading) return;
+
+  // Campo vazio (ex.: após limpar a busca) → limpa o resultado e volta ao estado inicial.
+  if (!cityName) {
+    resetView();
+    return;
+  }
 
   isLoading = true;
   showLoading();
@@ -104,33 +142,27 @@ form?.addEventListener("submit", async (event) => {
   try {
     const geocoding = await getCityCoordinates(cityName);
     if (!geocoding) {
-      // Geocoding sem resultados → Empty State e card oculto.
-      clearWeatherTheme();
-      showEmptyState();
-      hideCard();
+      // Geocoding sem resultados → "cidade não encontrada".
+      showNotFoundState();
       return;
     }
 
     const { latitude, longitude, timezone } = geocoding.results[0];
     const forecast = await getWeather(latitude, longitude, timezone);
     if (!forecast) {
-      // Forecast sem dados → Empty State e card oculto.
-      clearWeatherTheme();
-      showEmptyState();
-      hideCard();
+      // Forecast sem dados → "cidade não encontrada".
+      showNotFoundState();
       return;
     }
 
     // Sucesso → tema conforme o clima, oculta o Empty State, revela o card e injeta os dados.
     applyWeatherTheme(forecast.current.weather_code, forecast.current.is_day);
-    hideEmptyState();
+    emptyState?.classList.add("hidden");
     showCard();
     renderWeather(geocoding.results[0], forecast);
   } catch {
     // Falhas no fluxo convergem para o Empty State, sem erro técnico ao usuário.
-    clearWeatherTheme();
-    showEmptyState();
-    hideCard();
+    showNotFoundState();
   } finally {
     isLoading = false;
     hideLoading();

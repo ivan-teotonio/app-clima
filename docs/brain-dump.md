@@ -129,6 +129,10 @@ mas para o usuário é uma só, com loading.
 
 Tem que ter Empty State.
 
+- No carregamento inicial, o Empty State deve orientar o usuário a buscar uma cidade;
+- A mensagem de "cidade não encontrada" só aparece após uma busca sem resultados;
+- Se o campo for limpo e enviado vazio, o resultado anterior sai da tela e o app volta ao estado inicial.
+
 Teremos uma área SUPERIOR centralizada que tem apenas o campo da busca da cidade
 
 O projeto terá um sidebar na esquerda com as seguintes informações:
