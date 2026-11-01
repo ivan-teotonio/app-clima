@@ -25,28 +25,52 @@
           />
         </form>
       </section>
+
       <div class="loading hidden" id="loading">
         <p>Buscando o clima...</p>
       </div>
+
       <div class="empty-state" id="empty-state">
-        <p>Não encontramos dados para esta cidade.</p>
-        <p>Verifique o nome digitado ou tente outra cidade.</p>
+        <p class="empty-state__title">
+          Não encontramos dados para esta cidade.
+        </p>
+        <p class="empty-state__hint">
+          Verifique o nome digitado ou tente outra cidade.
+        </p>
       </div>
+
       <div class="content hidden" id="content">
         <aside class="sidebar" id="sidebar">
-          <p id="sidebar-temperature">--</p>
-          <h2 id="sidebar-city-name">Cidade</h2>
-          <span id="sidebar-country-code">BR</span>
-          <p id="sidebar-day">--</p>
-          <p id="sidebar-is-day">--</p>
-          <p id="sidebar-weather-code">--</p>
+          <p class="sidebar__temperature" id="sidebar-temperature">--</p>
+          <h2 class="sidebar__city">
+            <span id="sidebar-city-name">Cidade</span>
+            <span class="sidebar__country" id="sidebar-country-code">BR</span>
+          </h2>
+          <p class="sidebar__day" id="sidebar-day">--</p>
+          <p class="sidebar__is-day" id="sidebar-is-day">--</p>
+          <p class="sidebar__weather-code" id="sidebar-weather-code">--</p>
         </aside>
+
         <main class="weather-info" id="weather-info">
-          <p id="weather-info-humidity">--</p>
-          <p id="weather-info-apparent-temperature">--</p>
-          <p id="weather-info-precipitation-probability">--</p>
-          <p id="weather-info-wind-speed">--</p>
-          <p id="weather-info-wind-direction">--</p>
+          <div class="weather-info__item">
+            <span class="weather-info__label">Umidade relativa</span>
+            <span class="weather-info__value" id="weather-info-humidity">--</span>
+          </div>
+          <div class="weather-info__item">
+            <span class="weather-info__label">Temperatura aparente</span>
+            <span class="weather-info__value" id="weather-info-apparent-temperature">--</span>
+          </div>
+          <div class="weather-info__item">
+            <span class="weather-info__label">Probabilidade de precipitação</span>
+            <span class="weather-info__value" id="weather-info-precipitation-probability">--</span>
+          </div>
+          <div class="weather-info__item">
+            <span class="weather-info__label">Vento</span>
+            <span class="weather-info__value">
+              <span id="weather-info-wind-speed">--</span>
+              <span class="weather-info__direction" id="weather-info-wind-direction">--</span>
+            </span>
+          </div>
         </main>
       </div>
     </div>
