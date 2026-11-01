@@ -41,9 +41,6 @@ jobs:
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
-        with:
-          # Tenta criar o site do Pages automaticamente no primeiro deploy.
-          enablement: true
 
       - name: Enviar artefato do site
         uses: actions/upload-pages-artifact@v3
