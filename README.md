@@ -8,7 +8,7 @@
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vite.dev/)
 [![Vanilla TS](https://img.shields.io/badge/Vanilla_TS-sem_frameworks-000000?style=flat-square)](https://developer.mozilla.org/docs/Web/API/Document_Object_Model)
 [![Open-Meteo](https://img.shields.io/badge/API-Open--Meteo-00A3E0?style=flat-square)](https://open-meteo.com/)
-[![Deploy](https://github.com/ivan-teotonio/app-clima/actions/workflows/deploy.yml/badge.svg)](https://github.com/ivan-teotonio/app-clima/actions/workflows/deploy.yml)
+[![Deploy](https://img.shields.io/badge/deploy-GitHub_Pages-222?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/ivan-teotonio/app-clima/actions/workflows/deploy.yml)
 [![Status](https://img.shields.io/badge/status-MVP_conclu%C3%ADdo-2ea44f?style=flat-square)](#roadmap)
 
 **TypeScript · Vite · HTML semântico · CSS puro · Open-Meteo**
