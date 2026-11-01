@@ -271,7 +271,7 @@ Demais variáveis presentes na requisição (`precipitation`, `weather_code`) s�
 
 | Estado | Requisito |
 |---|---|
-| Loading | Spinner girando + mensagem durante a busca (geocoding + forecast) |
+| Loading | Spinner girando + mensagem durante a busca (geocoding + forecast); card e Empty State ocultos |
 | Sucesso | Sidebar + área principal preenchidas |
 | Vazio | **Empty state obrigatório**: no estado inicial orienta a busca; após busca sem resultados exibe "cidade não encontrada" |
 | Erro | Mensagem amigável + ação de nova busca |
@@ -345,6 +345,7 @@ Após uma busca bem-sucedida, o fundo da aplicação e a cor de destaque da temp
 - [x] Sidebar e área principal seguem o layout visual definido (card branco, max 800px, fundo escuro).
 - [x] Todas as variáveis obrigatórias da API estão sendo exibidas.
 - [x] O build é validado pelo CI e publicado na Vercel a cada push em `main`.
+- [x] Durante o loading, apenas o spinner e a mensagem de busca são exibidos.
 
 ---
 

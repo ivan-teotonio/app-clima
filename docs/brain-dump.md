@@ -161,7 +161,8 @@ Cores e feedback visual:
 
 - O fundo da aplicação muda de cor conforme a condição climática retornada (weather code),
   considerando também se é dia ou noite;
-- O estado de loading exibe um spinner girando junto com a mensagem de busca.
+- O estado de loading exibe um spinner girando junto com a mensagem de busca;
+- Durante o loading, o card e o Empty State ficam ocultos: apenas o spinner e a mensagem de busca são exibidos.
 
 Informações de interpretação sobre o Weather Code
 WMO Weather interpretation codes (WW)

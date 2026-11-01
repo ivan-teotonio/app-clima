@@ -157,3 +157,12 @@
   - Observação: a integração Git e o deploy são configurados no painel da Vercel; o GitHub Actions cuida da validação e do build.
 
   - Requisito(s) relacionado(s): PRD — seção 4.4 (Entrega contínua).
+
+- [x] **Task 18 — Ocultar Empty State e card durante o loading**
+
+  - Critério de aprovação:
+    - [x] Ao iniciar uma busca, o Empty State e o card ficam ocultos;
+    - [x] Apenas o spinner + mensagem de loading são exibidos;
+    - [x] Sucesso e falha continuam exibindo o estado visual correto.
+
+  - Requisito(s) relacionado(s): PRD — seção 6.3 (Estados visuais).

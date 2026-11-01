@@ -134,7 +134,7 @@ clima/
 ├── docs/
 │   ├── brain-dump.md          # ideação e decisões iniciais
 │   ├── prd.md                 # requisitos funcionais e técnicos
-│   ├── tasks.md               # 17 tarefas com critérios de aceite
+│   ├── tasks.md               # 18 tarefas com critérios de aceite
 │   └── screenshots/
 ├── public/                    # favicon e ícones
 └── package.json
@@ -296,7 +296,7 @@ Este repositório foi desenvolvido com documentação antes e durante o código:
 |---|---|
 | [`docs/brain-dump.md`](docs/brain-dump.md) | Ideação, hipóteses e decisões iniciais. |
 | [`docs/prd.md`](docs/prd.md) | Requisitos funcionais, técnicos, visuais e critérios de aceite. |
-| [`docs/tasks.md`](docs/tasks.md) | 17 tarefas incrementais com critérios de aprovação. |
+| [`docs/tasks.md`](docs/tasks.md) | 18 tarefas incrementais com critérios de aprovação. |
 
 ---
 

@@ -84,6 +84,17 @@ const showEmptyState = (variant: EmptyStateVariant = "initial") => {
   emptyState?.classList.remove("hidden");
 };
 
+const hideEmptyState = () => {
+  emptyState?.classList.add("hidden");
+};
+
+/** Loading: esconde card e Empty State, deixando apenas o spinner visível. */
+const showLoadingState = () => {
+  hideCard();
+  hideEmptyState();
+  showLoading();
+};
+
 /** Estado inicial: Empty State de orientação, card oculto e tema neutro. */
 const resetView = () => {
   clearWeatherTheme();
@@ -137,7 +148,7 @@ form?.addEventListener("submit", async (event) => {
   }
 
   isLoading = true;
-  showLoading();
+  showLoadingState();
 
   try {
     const geocoding = await getCityCoordinates(cityName);
@@ -157,7 +168,7 @@ form?.addEventListener("submit", async (event) => {
 
     // Sucesso → tema conforme o clima, oculta o Empty State, revela o card e injeta os dados.
     applyWeatherTheme(forecast.current.weather_code, forecast.current.is_day);
-    emptyState?.classList.add("hidden");
+    hideEmptyState();
     showCard();
     renderWeather(geocoding.results[0], forecast);
   } catch {
