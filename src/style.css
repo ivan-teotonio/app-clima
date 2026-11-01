@@ -34,3 +34,14 @@
   white-space: nowrap;
   border: 0;
 }
+
+/* Task 6 — Loading durante a busca */
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.loading[hidden] {
+  display: none;
+}

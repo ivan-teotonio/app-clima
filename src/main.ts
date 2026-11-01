@@ -1,13 +1,42 @@
 import "./style.css";
+import { getCityCoordinates, getWeather } from "./services/open-meteo";
 
 const form = document.querySelector<HTMLFormElement>("#search-form");
 const input = document.querySelector<HTMLInputElement>("#city-search");
+const loading = document.querySelector<HTMLElement>("#loading");
 
-form?.addEventListener("submit", (event) => {
+let isLoading = false;
+
+const showLoading = () => {
+  loading?.removeAttribute("hidden");
+};
+
+const hideLoading = () => {
+  loading?.setAttribute("hidden", "");
+};
+
+form?.addEventListener("submit", async (event) => {
   event.preventDefault();
+
+  const cityName = input?.value.trim() ?? "";
+  if (!cityName || isLoading) return;
+
+  isLoading = true;
+  showLoading();
+
+  try {
+    const geocoding = await getCityCoordinates(cityName);
+    if (!geocoding) return;
+
+    const { latitude, longitude, timezone } = geocoding.results[0];
+    await getWeather(latitude, longitude, timezone);
+  } finally {
+    isLoading = false;
+    hideLoading();
+  }
 });
 
 input?.addEventListener("input", () => {
   // A lógica de estado da busca será integrada nas próximas tasks
-  // (Task 6 — loading, Task 7 — empty state, Task 8 — exibição de dados).
+  // (Task 7 — empty state, Task 8 — exibição de dados).
 });

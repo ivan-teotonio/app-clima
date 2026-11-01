@@ -52,11 +52,11 @@
 
   - Observação: após a implementação, o markup do campo permanece no `index.html`; a interação e a lógica ficam no TypeScript.
 
-- [ ] **Task 6 — Implementar estado de Loading durante a busca**
+- [x] **Task 6 — Implementar estado de Loading durante a busca**
 
   - Critério de aprovação:
-    - [ ] Estado de loading exibido durante geocoding + forecast;
-    - [ ] Loading acompanha o fluxo completo da busca.
+    - [x] Estado de loading exibido durante geocoding + forecast;
+    - [x] Loading acompanha o fluxo completo da busca.
 
   - Requisito(s) relacionado(s): PRD — RF-02 (seção 3.2).
 
