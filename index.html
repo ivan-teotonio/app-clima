@@ -11,7 +11,21 @@
     <title>Clima</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <section class="app-header">
+        <form class="search-bar" id="search-form">
+          <label class="sr-only" for="city-search">Cidade</label>
+          <input
+            class="search-bar__input"
+            id="city-search"
+            name="city"
+            type="text"
+            placeholder="Ex.: São Paulo"
+            autocomplete="off"
+          />
+        </form>
+      </section>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

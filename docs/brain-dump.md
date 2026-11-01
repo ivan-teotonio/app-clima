@@ -7,6 +7,9 @@ temperatura, humidade e etc...
 
 O projeto vai ser feito em Vite + Vanilla + Typescript
 
+- Todo o HTML da interface fica definido no `index.html` (container `#app`);
+- Toda a interação e a lógica ficam no TypeScript (eventos, service layer, estados).
+
 ### Informações da API que será usada no projeto
 
 Ele vai usar a APi OpenMeteo, om os seguintes endpoints:

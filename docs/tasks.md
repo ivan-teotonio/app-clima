@@ -50,6 +50,8 @@
 
   - Requisito(s) relacionado(s): PRD — RF-01 (seção 3.1).
 
+  - Observação: após a implementação, o markup do campo permanece no `index.html`; a interação e a lógica ficam no TypeScript.
+
 - [ ] **Task 6 — Implementar estado de Loading durante a busca**
 
   - Critério de aprovação:

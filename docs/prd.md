@@ -154,15 +154,16 @@ Build padrão do projeto: `tsc && vite build`.
 
 ```
 src/
-├── main.ts                 # bootstrap
-├── components/             # componentes de UI (ex.: SearchBar, Sidebar, WeatherInfo, EmptyState, Loading)
+├── main.ts                 # bootstrap — monta a interface em #app e registra as interações
 ├── services/               # funções que encapsulam as chamadas ao Open-Meteo
 ├── types/                  # interfaces dos payloads da API
 ├── utils/                  # mapeamentos (weather code, direção do vento, dia da semana)
 └── styles/                 # estilos (CSS)
 ```
 
-**Regra de arquitetura:** o projeto **não deve fazer requisição direta à API** a partir dos componentes; toda chamada deve passar por um módulo de funções (service layer).
+A interface (HTML) é definida diretamente no `index.html`, dentro do container `#app`; toda a interação e a lógica ficam no TypeScript (via `main.ts` e módulos).
+
+**Regra de arquitetura:** o projeto **não deve fazer requisição direta à API** a partir da interface; toda chamada deve passar por um módulo de funções (service layer).
 
 ### 5.3. Contrato de API — Geocoding
 

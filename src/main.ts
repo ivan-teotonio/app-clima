@@ -1,18 +1,13 @@
 import "./style.css";
-import { createSearchBar } from "./components/SearchBar";
 
-const app = document.getElementById("app");
+const form = document.querySelector<HTMLFormElement>("#search-form");
+const input = document.querySelector<HTMLInputElement>("#city-search");
 
-if (app) {
-  const header = document.createElement("section");
-  header.className = "app-header";
+form?.addEventListener("submit", (event) => {
+  event.preventDefault();
+});
 
-  const searchBar = createSearchBar({
-    value: "",
-    onChange: () => undefined,
-    onSubmit: () => undefined,
-  });
-
-  header.appendChild(searchBar);
-  app.appendChild(header);
-}
+input?.addEventListener("input", () => {
+  // A lógica de estado da busca será integrada nas próximas tasks
+  // (Task 6 — loading, Task 7 — empty state, Task 8 — exibição de dados).
+});
