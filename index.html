@@ -26,8 +26,9 @@
         </form>
       </section>
 
-      <div class="loading hidden" id="loading">
-        <p>Buscando o clima...</p>
+      <div class="loading hidden" id="loading" role="status" aria-live="polite">
+        <span class="loading__spinner" aria-hidden="true"></span>
+        <p class="loading__text">Buscando o clima...</p>
       </div>
 
       <div class="empty-state" id="empty-state">

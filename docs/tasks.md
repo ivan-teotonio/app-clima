@@ -102,3 +102,19 @@
     - [x] Checklist de Critérios de Aceite do PRD (seção 8) atendido.
 
   - Requisito(s) relacionado(s): PRD — seção 8 (Critérios de aceite).
+
+- [x] **Task 12 — Aplicar cores dinâmicas conforme a condição climática**
+
+  - Critério de aprovação:
+    - [x] Fundo (e cor de destaque) muda conforme o `weather_code` e `is_day`;
+    - [x] Paleta documentada no PRD (seção 6.5).
+
+  - Requisito(s) relacionado(s): PRD — seção 6.5 (Cores dinâmicas por condição climática).
+
+- [x] **Task 13 — Adicionar spinner animado ao estado de Loading**
+
+  - Critério de aprovação:
+    - [x] Spinner girando exibido durante geocoding + forecast;
+    - [x] Loading acompanha o fluxo completo da busca.
+
+  - Requisito(s) relacionado(s): PRD — seção 6.3 (Estados visuais).

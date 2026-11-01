@@ -248,7 +248,7 @@ Demais variáveis presentes na requisição (`precipitation`, `weather_code`) s�
 +--------------------------------------------------------------+
 ```
 
-- **Fundo da aplicação:** cinza escuro.
+- **Fundo da aplicação:** cinza escuro no estado inicial/vazio; após uma busca bem-sucedida, assume a paleta da condição climática (seção 6.5).
 - **Área superior:** sem background; conteúdo centralizado com **apenas o campo de busca da cidade**.
 - **Card de conteúdo:** borda bem arredondada, **fundo branco**, **centralizado**, **largura máxima de 800px**.
 - **Sidebar:** à esquerda; **área principal:** à direita (empilhadas em telas estreitas).
@@ -263,7 +263,7 @@ Demais variáveis presentes na requisição (`precipitation`, `weather_code`) s�
 
 | Estado | Requisito |
 |---|---|
-| Loading | Indicação durante a busca (geocoding + forecast) |
+| Loading | Spinner girando + mensagem durante a busca (geocoding + forecast) |
 | Sucesso | Sidebar + área principal preenchidas |
 | Vazio | **Empty state obrigatório** com mensagem e orientação |
 | Erro | Mensagem amigável + ação de nova busca |
@@ -299,6 +299,24 @@ Demais variáveis presentes na requisição (`precipitation`, `weather_code`) s�
 | 86 | Snow showers: Heavy | Chuva e neve em ráfagas: Forte |
 | 95 | Thunderstorm with hail | Tempestade com granizo |
 | 99 | Thunderstorm with hail | Tempestade com granizo |
+
+### 6.5. Cores dinâmicas por condição climática
+
+Após uma busca bem-sucedida, o fundo da aplicação e a cor de destaque da temperatura assumem uma paleta baseada em `current.weather_code` e em `current.is_day`:
+
+| Grupo | Weather codes | Dia | Noite |
+|---|---|---|---|
+| Céu claro | 0, 1 | Azul céu | Azul noturno |
+| Nublado | 2, 3 | Cinza azulado | Cinza escuro |
+| Neblina | 45, 48 | Cinza suave | Cinza escuro |
+| Garoa | 51, 53, 55, 56, 57 | Azul-acinzentado | Azul petróleo |
+| Chuva | 61–67, 80–82 | Azul chuvoso | Azul profundo |
+| Neve | 71–77, 85, 86 | Azul gelado | Azul-acinzentado |
+| Tempestade | 95, 99 | Cinza-tempestade | Azul quase preto |
+
+- Sem dados (estado inicial/vazio) o fundo permanece no cinza escuro neutro;
+- Em caso de falha, o tema anterior é removido (volta ao neutro);
+- O spinner do loading é exibido sobre o fundo do tema atual.
 
 ---
 

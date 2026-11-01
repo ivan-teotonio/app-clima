@@ -153,6 +153,12 @@ Design geral:
   dentro de uma div com borda bem arredondada, fundo branco, centralizada e largura máxima
   de 800px.
 
+Cores e feedback visual:
+
+- O fundo da aplicação muda de cor conforme a condição climática retornada (weather code),
+  considerando também se é dia ou noite;
+- O estado de loading exibe um spinner girando junto com a mensagem de busca.
+
 Informações de interpretação sobre o Weather Code
 WMO Weather interpretation codes (WW)
 Code Description

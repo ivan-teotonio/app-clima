@@ -1,6 +1,12 @@
 import "./style.css";
 import { getCityCoordinates, getWeather } from "./services/open-meteo";
-import { getWeatherDescription, getWindDirection, isDay, getDayOfWeek } from "./utils/mappings";
+import {
+  getWeatherDescription,
+  getWindDirection,
+  getDayOfWeek,
+  getWeatherTheme,
+  isDay,
+} from "./utils/mappings";
 import type { ForecastResponse, GeocodingResult } from "./types/open-meteo";
 
 const form = document.querySelector<HTMLFormElement>("#search-form");
@@ -46,9 +52,22 @@ const hideCard = () => {
   card?.classList.add("hidden");
 };
 
-// Estado inicial: Empty State visível e card de dados oculto.
+/** Remove o tema climático (volta ao fundo cinza escuro neutro). */
+const clearWeatherTheme = () => {
+  document.body.removeAttribute("data-weather");
+  document.body.removeAttribute("data-daytime");
+};
+
+/** Aplica a paleta de cores que combina com a condição climática retornada. */
+const applyWeatherTheme = (weatherCode: number, dayFlag: number) => {
+  document.body.dataset.weather = getWeatherTheme(weatherCode);
+  document.body.dataset.daytime = isDay(dayFlag) ? "day" : "night";
+};
+
+// Estado inicial: Empty State visível, card oculto e tema neutro.
 showEmptyState();
 hideCard();
+clearWeatherTheme();
 
 /** Exibe os dados do forecast na sidebar e na área principal (substitui os placeholders "--"). */
 const renderWeather = (city: GeocodingResult, forecast: ForecastResponse) => {
@@ -83,6 +102,7 @@ form?.addEventListener("submit", async (event) => {
     const geocoding = await getCityCoordinates(cityName);
     if (!geocoding) {
       // Geocoding sem resultados → Empty State e card oculto.
+      clearWeatherTheme();
       showEmptyState();
       hideCard();
       return;
@@ -92,17 +112,20 @@ form?.addEventListener("submit", async (event) => {
     const forecast = await getWeather(latitude, longitude, timezone);
     if (!forecast) {
       // Forecast sem dados → Empty State e card oculto.
+      clearWeatherTheme();
       showEmptyState();
       hideCard();
       return;
     }
 
-    // Sucesso → oculta o Empty State, revela o card e injeta os dados reais.
+    // Sucesso → tema conforme o clima, oculta o Empty State, revela o card e injeta os dados.
+    applyWeatherTheme(forecast.current.weather_code, forecast.current.is_day);
     hideEmptyState();
     showCard();
     renderWeather(geocoding.results[0], forecast);
   } catch {
     // Falhas no fluxo convergem para o Empty State, sem erro técnico ao usuário.
+    clearWeatherTheme();
     showEmptyState();
     hideCard();
   } finally {

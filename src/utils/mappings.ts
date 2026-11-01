@@ -61,3 +61,33 @@ export function getDayOfWeek(time: string): string {
   }
   return new Intl.DateTimeFormat("pt-BR", { weekday: "long" }).format(date);
 }
+
+export type WeatherTheme =
+  | "clear"
+  | "cloudy"
+  | "fog"
+  | "drizzle"
+  | "rain"
+  | "snow"
+  | "storm";
+
+/** Agrupa o weather code (WMO) em um tema visual (paleta de cores do layout). */
+export function getWeatherTheme(code: number): WeatherTheme {
+  if (code === 0 || code === 1) return "clear";
+  if (code === 2 || code === 3) return "cloudy";
+  if (code === 45 || code === 48) return "fog";
+  if (code >= 51 && code <= 57) return "drizzle";
+  if ((code >= 61 && code <= 67) || (code >= 80 && code <= 82)) return "rain";
+  if (
+    code === 71 ||
+    code === 73 ||
+    code === 75 ||
+    code === 77 ||
+    code === 85 ||
+    code === 86
+  ) {
+    return "snow";
+  }
+  if (code === 95 || code === 99) return "storm";
+  return "cloudy";
+}

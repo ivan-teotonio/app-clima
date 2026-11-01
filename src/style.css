@@ -10,9 +10,11 @@ body {
   margin: 0;
   min-height: 100vh;
   background-color: #333;
+  transition: background 0.4s ease;
   color: #1f1f1f;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
+  --accent: #4a90d9;
 }
 
 /* ============================================================
@@ -66,14 +68,42 @@ body {
 }
 
 /* ============================================================
-   Task 6 — Loading durante a busca
+   Task 6 / 13 — Loading com spinner girando
    ============================================================ */
 
 .loading {
   display: flex;
-  justify-content: center;
-  padding: 2rem 1rem;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2.5rem 1rem;
   color: #f2f2f2;
+}
+
+.loading__spinner {
+  width: 42px;
+  height: 42px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: loading-spin 0.9s linear infinite;
+}
+
+.loading__text {
+  margin: 0;
+  font-weight: 500;
+}
+
+@keyframes loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading__spinner {
+    animation-duration: 2.5s;
+  }
 }
 
 /* ============================================================
@@ -147,7 +177,7 @@ body {
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1;
-  color: #111111;
+  color: var(--accent);
 }
 
 .sidebar__city {
@@ -206,6 +236,7 @@ body {
   padding: 1rem 1.1rem;
   background-color: #f7f7f7;
   border-radius: 14px;
+  border-top: 3px solid var(--accent);
 }
 
 .weather-info__label {
@@ -229,6 +260,87 @@ body {
   font-size: 0.95rem;
   font-weight: 600;
   color: #555555;
+}
+
+/* ============================================================
+   Task 12 — Cores dinâmicas por condição climática
+   ============================================================ */
+
+/* Céu claro */
+body[data-weather="clear"] {
+  background: linear-gradient(180deg, #2f7fc1, #57a7d9);
+  --accent: #1d6fb0;
+}
+
+body[data-weather="clear"][data-daytime="night"] {
+  background: linear-gradient(180deg, #16233d, #2c3e63);
+  --accent: #1d3f6b;
+}
+
+/* Nublado */
+body[data-weather="cloudy"] {
+  background: linear-gradient(180deg, #5a6a78, #7f8f9c);
+  --accent: #4d5b67;
+}
+
+body[data-weather="cloudy"][data-daytime="night"] {
+  background: linear-gradient(180deg, #2a333d, #46525d);
+  --accent: #39434c;
+}
+
+/* Neblina */
+body[data-weather="fog"] {
+  background: linear-gradient(180deg, #69787e, #95a3a8);
+  --accent: #55646a;
+}
+
+body[data-weather="fog"][data-daytime="night"] {
+  background: linear-gradient(180deg, #333b40, #525c61);
+  --accent: #45505a;
+}
+
+/* Garoa */
+body[data-weather="drizzle"] {
+  background: linear-gradient(180deg, #46606f, #6d8a9b);
+  --accent: #36505f;
+}
+
+body[data-weather="drizzle"][data-daytime="night"] {
+  background: linear-gradient(180deg, #22303a, #3b4f5c);
+  --accent: #2c4350;
+}
+
+/* Chuva */
+body[data-weather="rain"] {
+  background: linear-gradient(180deg, #33505f, #537487);
+  --accent: #2a4a59;
+}
+
+body[data-weather="rain"][data-daytime="night"] {
+  background: linear-gradient(180deg, #1d2b34, #33454f);
+  --accent: #253a45;
+}
+
+/* Neve */
+body[data-weather="snow"] {
+  background: linear-gradient(180deg, #5f7b8c, #8fa9b8);
+  --accent: #45647a;
+}
+
+body[data-weather="snow"][data-daytime="night"] {
+  background: linear-gradient(180deg, #3d4f5b, #63798a);
+  --accent: #33454f;
+}
+
+/* Tempestade */
+body[data-weather="storm"] {
+  background: linear-gradient(180deg, #2a3040, #454e63);
+  --accent: #333a4c;
+}
+
+body[data-weather="storm"][data-daytime="night"] {
+  background: linear-gradient(180deg, #141a24, #2c3344);
+  --accent: #232938;
 }
 
 /* ============================================================
