@@ -8,10 +8,13 @@
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vite.dev/)
 [![Vanilla TS](https://img.shields.io/badge/Vanilla_TS-sem_frameworks-000000?style=flat-square)](https://developer.mozilla.org/docs/Web/API/Document_Object_Model)
 [![Open-Meteo](https://img.shields.io/badge/API-Open--Meteo-00A3E0?style=flat-square)](https://open-meteo.com/)
-[![Deploy](https://img.shields.io/badge/deploy-GitHub_Pages-222?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/ivan-teotonio/app-clima/actions/workflows/deploy.yml)
+[![Deploy](https://img.shields.io/badge/deploy-Vercel-000000?style=flat-square&logo=vercel&logoColor=white)](https://app-clima-five-gamma.vercel.app/)
+[![CI](https://github.com/ivan-teotonio/app-clima/actions/workflows/ci.yml/badge.svg)](https://github.com/ivan-teotonio/app-clima/actions/workflows/ci.yml)
 [![Status](https://img.shields.io/badge/status-MVP_conclu%C3%ADdo-2ea44f?style=flat-square)](#roadmap)
 
 **TypeScript · Vite · HTML semântico · CSS puro · Open-Meteo**
+
+<p><a href="https://app-clima-five-gamma.vercel.app/"><strong>🔗 Acesse o app online</strong></a></p>
 
 </div>
 
@@ -66,7 +69,8 @@ O projeto foi construído **do zero com Vanilla TypeScript**, sem frameworks de 
 | **HTML5** | Toda a estrutura da interface, com marcação semântica e acessível. |
 | **CSS3** | Layout com Flexbox/Grid, variáveis CSS, temas por atributo, animações e media queries. |
 | **[Open-Meteo](https://open-meteo.com/)** | APIs públicas de geocoding e forecast, sem necessidade de chave. |
-| **GitHub Actions** | Build e deploy automáticos no GitHub Pages a cada push em `main`. |
+| **[Vercel](https://vercel.com/)** | Deploy de produção e previews automáticos a cada push/PR. |
+| **GitHub Actions** | CI: instala, builda e guarda o `dist/` como artefato. |
 
 > `package.json` contém apenas dependências de desenvolvimento (`vite` e `typescript`). Nada é enviado ao navegador além do código do próprio app.
 
@@ -115,9 +119,9 @@ flowchart LR
 clima/
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml         # CI/CD: build + deploy no GitHub Pages
+│       └── ci.yml             # CI: build + artefato do dist
 ├── index.html                 # toda a interface (markup estático)
-├── vite.config.ts             # base do build para o GitHub Pages
+├── vite.config.ts             # base "/" para Vercel (configurável)
 ├── src/
 │   ├── main.ts                # orquestração, estados e renderização
 │   ├── style.css              # layout, temas e animações
@@ -207,7 +211,7 @@ A aplicação estará disponível em `http://localhost:5173` (ou na próxima por
 |---|---|
 | `npm run dev` | Inicia o servidor de desenvolvimento com HMR. |
 | `npm run build` | Roda `tsc` (checagem de tipos) e gera o build otimizado em `dist/`. |
-| `npm run preview` | Serve localmente o build de produção em `http://localhost:4173/app-clima/`. |
+| `npm run preview` | Serve localmente o build de produção em `http://localhost:4173/`. |
 
 > Não há variáveis de ambiente nem chave de API: o Open-Meteo é público e não exige autenticação.
 
@@ -215,17 +219,21 @@ A aplicação estará disponível em `http://localhost:5173` (ou na próxima por
 
 ## Deploy e CI/CD
 
-O deploy é contínuo: todo push em `main` — ou uma execução manual — dispara o workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), que:
+O deploy de produção é feito pela **Vercel**, conectada ao repositório do GitHub:
 
-1. instala as dependências com `npm ci`;
-2. roda `npm run build` (`tsc` + Vite);
-3. publica o conteúdo de `dist/` no GitHub Pages.
+- todo push em `main` gera um **deploy de produção**;
+- pull requests ganham **preview deployments** automáticos;
+- a Vercel roda `npm run build` e publica o conteúdo de `dist/`.
 
-O [`vite.config.ts`](vite.config.ts) define `base: "/app-clima/"` no build e no preview, porque o GitHub Pages serve o projeto em um subdiretório. Em desenvolvimento a base continua `/`.
+**Produção:** https://app-clima-five-gamma.vercel.app/
 
-**URL:** https://ivan-teotonio.github.io/app-clima/
+Em paralelo, o GitHub Actions executa o **CI** em pushes e pull requests: [`.github/workflows/ci.yml`](.github/workflows/ci.yml) instala as dependências com `npm ci`, roda `tsc` + Vite e guarda o `dist/` como artefato por 7 dias.
 
-> **Primeiro deploy:** em *Settings → Pages → Build and deployment*, selecione **GitHub Actions** como source. Depois rode o workflow em *Actions → Deploy — GitHub Pages → Run workflow* (ou faça um novo push em `main`). Enquanto o Pages não estiver habilitado, o job de deploy falha.
+O [`vite.config.ts`](vite.config.ts) usa `base: "/"` por padrão, compatível com a Vercel e com o servidor de desenvolvimento. Para publicar em um subdiretório (ex.: GitHub Pages), defina a variável no build:
+
+```bash
+VITE_BASE_PATH=/app-clima/ npm run build
+```
 
 ---
 
@@ -275,7 +283,8 @@ npm run build   # tsc + vite build
 - [x] Tema de fundo e cor de destaque mudam conforme clima e dia/noite;
 - [x] Layout funciona em desktop e mobile;
 - [x] Build de produção conclui sem erros;
-- [x] Pipeline de CI/CD builda e publica a cada push em `main`.
+- [x] CI (GitHub Actions) valida o build em pushes e pull requests;
+- [x] Deploy de produção na Vercel a cada push em `main`.
 
 ---
 
@@ -297,8 +306,7 @@ Este repositório foi desenvolvido com documentação antes e durante o código:
 - [ ] Geolocalização do usuário (GPS);
 - [ ] Favoritos e histórico de buscas;
 - [ ] Troca de unidades (°C/°F, km/h/mph);
-- [ ] Testes automatizados (Vitest + Playwright);
-- [ ] Preview de pull requests com deploy efêmero.
+- [ ] Testes automatizados (Vitest + Playwright).
 
 ---
 

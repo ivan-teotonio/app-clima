@@ -182,8 +182,8 @@ Code Description
 
 ### Deploy e CI/CD
 
-- O projeto é publicado no GitHub Pages automaticamente;
-- Todo push na branch `main` dispara o GitHub Actions;
-- O pipeline instala dependências (`npm ci`), roda o build (`tsc` + Vite) e publica a pasta `dist/`;
-- Como o Pages serve o projeto em um subdiretório, o build usa `base: "/app-clima/"`;
-- Também é possível rodar o workflow manualmente pela aba Actions do GitHub.
+- O projeto é publicado na Vercel, conectada ao repositório do GitHub;
+- Todo push na branch `main` gera um deploy de produção; pull requests geram previews;
+- O GitHub Actions roda o CI (`npm ci` + `npm run build`) e guarda o `dist/` como artefato;
+- O build usa `base: "/"` por padrão, compatível com a Vercel;
+- Para hospedar em um subdiretório, o build aceita a variável `VITE_BASE_PATH`.

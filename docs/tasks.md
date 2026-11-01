@@ -145,15 +145,15 @@
 
   - Requisito(s) relacionado(s): documentação do projeto (README + screenshots).
 
-- [x] **Task 17 — Configurar CI/CD com GitHub Actions e GitHub Pages**
+- [x] **Task 17 — Configurar CI/CD com Vercel e GitHub Actions**
 
   - Critério de aprovação:
-    - [x] Workflow disparado em todo push para `main` (e execução manual);
-    - [x] Pipeline executa `npm ci` e `npm run build`;
-    - [x] Build publicado automaticamente no GitHub Pages;
-    - [x] `vite.config.ts` com `base` compatível com o subdiretório do Pages;
-    - [x] README e PRD atualizados com o processo de deploy.
+    - [x] Deploy de produção na Vercel a cada push em `main`;
+    - [x] Preview deployments para pull requests;
+    - [x] Workflow de CI no GitHub Actions (`npm ci` + `npm run build` + artefato `dist`);
+    - [x] Base do Vite compatível com a raiz da Vercel (configurável via `VITE_BASE_PATH`);
+    - [x] README, PRD e brain-dump atualizados com o processo de deploy.
 
-  - Observação: o primeiro deploy exige habilitar o Pages em *Settings → Pages* (source: **GitHub Actions**). Até lá, o job de deploy falha.
+  - Observação: a integração Git e o deploy são configurados no painel da Vercel; o GitHub Actions cuida da validação e do build.
 
   - Requisito(s) relacionado(s): PRD — seção 4.4 (Entrega contínua).

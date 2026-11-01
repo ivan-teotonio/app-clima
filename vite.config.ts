@@ -1,12 +1,11 @@
 import { defineConfig } from "vite";
 
 /**
- * O GitHub Pages publica o projeto em um subdiretório:
- * https://ivan-teotonio.github.io/app-clima/
+ * A Vercel (e o servidor de desenvolvimento) publica o app na raiz, então a
+ * base padrão é "/". Para hospedar em um subdiretório, defina VITE_BASE_PATH:
  *
- * Por isso o build e o preview usam a base "/app-clima/". Em desenvolvimento
- * a base continua "/" para manter o endereço habitual (http://localhost:5173/).
+ *   VITE_BASE_PATH=/app-clima/ npm run build
  */
-export default defineConfig(({ command, isPreview }) => ({
-  base: command === "build" || isPreview ? "/app-clima/" : "/",
-}));
+export default defineConfig({
+  base: process.env.VITE_BASE_PATH ?? "/",
+});

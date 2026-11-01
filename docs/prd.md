@@ -141,10 +141,10 @@ Ao submeter o nome da cidade, o sistema deve:
 
 ### 4.4. Entrega contínua
 
-- Todo push na branch `main` deve disparar um workflow de CI/CD no GitHub Actions;
-- O pipeline deve instalar dependências com `npm ci`, executar `npm run build` e publicar o conteúdo de `dist/` no GitHub Pages;
-- O site publicado fica em `https://ivan-teotonio.github.io/app-clima/`, com o build usando `base: "/app-clima/"`;
-- O workflow também deve poder ser executado manualmente (`workflow_dispatch`).
+- Todo push na branch `main` deve gerar um deploy de produção na **Vercel**;
+- Pull requests devem gerar **preview deployments** na Vercel;
+- Um workflow de **CI** no GitHub Actions deve rodar em pushes e pull requests, executando `npm ci`, `npm run build` e guardando o `dist/` como artefato;
+- O build deve usar `base: "/"` por padrão (compatível com a Vercel); subdiretórios podem ser configurados via `VITE_BASE_PATH`.
 
 ---
 
@@ -344,7 +344,7 @@ Após uma busca bem-sucedida, o fundo da aplicação e a cor de destaque da temp
 - [x] Durante a busca, exibe loading.
 - [x] Sidebar e área principal seguem o layout visual definido (card branco, max 800px, fundo escuro).
 - [x] Todas as variáveis obrigatórias da API estão sendo exibidas.
-- [x] O build é publicado automaticamente no GitHub Pages a cada push em `main`.
+- [x] O build é validado pelo CI e publicado na Vercel a cada push em `main`.
 
 ---
 
