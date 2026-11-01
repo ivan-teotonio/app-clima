@@ -118,3 +118,11 @@
     - [x] Loading acompanha o fluxo completo da busca.
 
   - Requisito(s) relacionado(s): PRD — seção 6.3 (Estados visuais).
+
+- [x] **Task 14 — Adicionar símbolos de dia e noite na sidebar**
+
+  - Critério de aprovação:
+    - [x] Indicador dia/noite exibe símbolo (☀ dia / ☾ noite) além do texto;
+    - [x] Documentado no PRD (seção 6.2).
+
+  - Requisito(s) relacionado(s): PRD — seção 6.2 (Componentes).

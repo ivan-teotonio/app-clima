@@ -256,7 +256,7 @@ Demais variáveis presentes na requisição (`precipitation`, `weather_code`) s�
 ### 6.2. Componentes
 
 - **SearchBar:** campo único de texto.
-- **Sidebar:** temperatura, cidade + código do país, dia atual, indicador dia/noite, weather code.
+- **Sidebar:** temperatura, cidade + código do país, dia atual, indicador dia/noite (símbolo ☀ para dia / ☾ para noite + texto), weather code.
 - **Área principal:** umidade relativa, temperatura aparente, probabilidade de precipitação, vento (velocidade/direção).
 
 ### 6.3. Estados visuais

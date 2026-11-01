@@ -208,9 +208,16 @@ body {
 }
 
 .sidebar__is-day {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
   margin: 0.35rem 0 0;
   font-weight: 600;
   color: #333333;
+}
+
+.sidebar__is-day-icon {
+  color: var(--accent);
 }
 
 .sidebar__weather-code {

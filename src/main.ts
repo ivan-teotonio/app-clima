@@ -19,6 +19,7 @@ const sidebarCityName = document.querySelector<HTMLElement>("#sidebar-city-name"
 const sidebarCountryCode = document.querySelector<HTMLElement>("#sidebar-country-code");
 const sidebarDay = document.querySelector<HTMLElement>("#sidebar-day");
 const sidebarIsDay = document.querySelector<HTMLElement>("#sidebar-is-day");
+const sidebarIsDayIcon = document.querySelector<HTMLElement>("#sidebar-is-day-icon");
 const sidebarWeatherCode = document.querySelector<HTMLElement>("#sidebar-weather-code");
 const weatherInfoHumidity = document.querySelector<HTMLElement>("#weather-info-humidity");
 const weatherInfoApparentTemperature = document.querySelector<HTMLElement>("#weather-info-apparent-temperature");
@@ -78,7 +79,9 @@ const renderWeather = (city: GeocodingResult, forecast: ForecastResponse) => {
   sidebarCityName!.textContent = city.name;
   sidebarCountryCode!.textContent = city.country_code;
   sidebarDay!.textContent = getDayOfWeek(current.time);
-  sidebarIsDay!.textContent = isDay(current.is_day) ? "Dia" : "Noite";
+  const day = isDay(current.is_day);
+  sidebarIsDayIcon!.textContent = day ? "☀" : "☾";
+  sidebarIsDay!.textContent = day ? "Dia" : "Noite";
   sidebarWeatherCode!.textContent = getWeatherDescription(current.weather_code);
 
   // Área principal: umidade, temperatura aparente, probabilidade de precipitação e vento.

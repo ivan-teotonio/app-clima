@@ -136,7 +136,7 @@ O projeto terá um sidebar na esquerda com as seguintes informações:
 - Temperatura
 - Nome da cidade, Código do pais
 - Dia atual
-- Se é dia/noite (baseado no is_day)
+- Se é dia/noite (baseado no is_day), com símbolo: ☀ para dia e ☾ para noite
 - Weather Code
 
 Na área principal
