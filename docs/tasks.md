@@ -42,11 +42,11 @@
 
   - Requisito(s) relacionado(s): PRD — seção 5.5 e seção 6.4.
 
-- [ ] **Task 5 — Implementar componente SearchBar (área superior centralizada)**
+- [x] **Task 5 — Implementar componente SearchBar (área superior centralizada)**
 
   - Critério de aprovação:
-    - [ ] Campo de busca único na área superior, centralizado;
-    - [ ] Campo acessível por teclado com label associado e placeholder.
+    - [x] Campo de busca único na área superior, centralizado;
+    - [x] Campo acessível por teclado com label associado e placeholder.
 
   - Requisito(s) relacionado(s): PRD — RF-01 (seção 3.1).
 
