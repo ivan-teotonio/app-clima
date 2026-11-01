@@ -221,11 +221,11 @@ O deploy é contínuo: todo push em `main` — ou uma execução manual — disp
 2. roda `npm run build` (`tsc` + Vite);
 3. publica o conteúdo de `dist/` no GitHub Pages.
 
-O [`vite.config.ts`](vite.config.ts) define `base: "/app-clima/"` no build, porque o GitHub Pages serve o projeto em um subdiretório. Em desenvolvimento a base continua `/`.
+O [`vite.config.ts`](vite.config.ts) define `base: "/app-clima/"` no build e no preview, porque o GitHub Pages serve o projeto em um subdiretório. Em desenvolvimento a base continua `/`.
 
 **URL:** https://ivan-teotonio.github.io/app-clima/
 
-> **Primeiro deploy:** em *Settings → Pages → Build and deployment*, selecione **GitHub Actions** como source. Depois rode o workflow em *Actions → Deploy — GitHub Pages → Run workflow* (ou faça um novo push em `main`).
+> **Primeiro deploy:** em *Settings → Pages → Build and deployment*, selecione **GitHub Actions** como source. Depois rode o workflow em *Actions → Deploy — GitHub Pages → Run workflow* (ou faça um novo push em `main`). Enquanto o Pages não estiver habilitado, o job de deploy falha.
 
 ---
 

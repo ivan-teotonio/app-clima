@@ -154,4 +154,6 @@
     - [x] `vite.config.ts` com `base` compatível com o subdiretório do Pages;
     - [x] README e PRD atualizados com o processo de deploy.
 
+  - Observação: o primeiro deploy exige habilitar o Pages em *Settings → Pages* (source: **GitHub Actions**). Até lá, o job de deploy falha.
+
   - Requisito(s) relacionado(s): PRD — seção 4.4 (Entrega contínua).
