@@ -68,12 +68,12 @@
 
   - Requisito(s) relacionado(s): PRD — UC-02 / RF-02 (seção 3.2).
 
-- [ ] **Task 8 — Implementar exibição de dados (sidebar + área principal)**
+- [x] **Task 8 — Implementar exibição de dados (sidebar + área principal)**
 
   - Critério de aprovação:
-    - [ ] Sidebar exibe temperatura, nome da cidade + código do país, dia atual, is_day e weather code;
-    - [ ] Área principal exibe umidade relativa, temperatura aparente, probabilidade de precipitação e vento (velocidade/direção);
-    - [ ] Variáveis obrigatórias da API estão sendo exibidas.
+    - [x] Sidebar exibe temperatura, nome da cidade + código do país, dia atual, is_day e weather code;
+    - [x] Área principal exibe umidade relativa, temperatura aparente, probabilidade de precipitação e vento (velocidade/direção);
+    - [x] Variáveis obrigatórias da API estão sendo exibidas.
 
   - Requisito(s) relacionado(s): PRD — RF-03 (seção 3.3).
 
