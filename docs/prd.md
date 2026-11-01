@@ -313,11 +313,11 @@ Demais variáveis presentes na requisição (`precipitation`, `weather_code`) s�
 
 ## 8. Critérios de aceite
 
-- [ ] Ao buscar "São Paulo", exibe temperatura, umidade, vento, etc.
-- [ ] Ao buscar cidade inexistente, exibe Empty State.
-- [ ] Durante a busca, exibe loading.
-- [ ] Sidebar e área principal seguem o layout visual definido (card branco, max 800px, fundo escuro).
-- [ ] Todas as variáveis obrigatórias da API estão sendo exibidas.
+- [x] Ao buscar "São Paulo", exibe temperatura, umidade, vento, etc.
+- [x] Ao buscar cidade inexistente, exibe Empty State.
+- [x] Durante a busca, exibe loading.
+- [x] Sidebar e área principal seguem o layout visual definido (card branco, max 800px, fundo escuro).
+- [x] Todas as variáveis obrigatórias da API estão sendo exibidas.
 
 ---
 

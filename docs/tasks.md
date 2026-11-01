@@ -95,10 +95,10 @@
 
   - Requisito(s) relacionado(s): PRD — seção 6 (Instruções visuais).
 
-- [ ] **Task 11 — Validação final (build + critérios de aceite do PRD)**
+- [x] **Task 11 — Validação final (build + critérios de aceite do PRD)**
 
   - Critério de aprovação:
-    - [ ] `npm run build` concluí com sucesso;
-    - [ ] Checklist de Critérios de Aceite do PRD (seção 8) atendido.
+    - [x] `npm run build` concluí com sucesso;
+    - [x] Checklist de Critérios de Aceite do PRD (seção 8) atendido.
 
   - Requisito(s) relacionado(s): PRD — seção 8 (Critérios de aceite).
