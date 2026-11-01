@@ -8,6 +8,7 @@
 [![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white)](https://vite.dev/)
 [![Vanilla TS](https://img.shields.io/badge/Vanilla_TS-sem_frameworks-000000?style=flat-square)](https://developer.mozilla.org/docs/Web/API/Document_Object_Model)
 [![Open-Meteo](https://img.shields.io/badge/API-Open--Meteo-00A3E0?style=flat-square)](https://open-meteo.com/)
+[![Deploy](https://github.com/ivan-teotonio/app-clima/actions/workflows/deploy.yml/badge.svg)](https://github.com/ivan-teotonio/app-clima/actions/workflows/deploy.yml)
 [![Status](https://img.shields.io/badge/status-MVP_conclu%C3%ADdo-2ea44f?style=flat-square)](#roadmap)
 
 **TypeScript · Vite · HTML semântico · CSS puro · Open-Meteo**
@@ -65,6 +66,7 @@ O projeto foi construído **do zero com Vanilla TypeScript**, sem frameworks de 
 | **HTML5** | Toda a estrutura da interface, com marcação semântica e acessível. |
 | **CSS3** | Layout com Flexbox/Grid, variáveis CSS, temas por atributo, animações e media queries. |
 | **[Open-Meteo](https://open-meteo.com/)** | APIs públicas de geocoding e forecast, sem necessidade de chave. |
+| **GitHub Actions** | Build e deploy automáticos no GitHub Pages a cada push em `main`. |
 
 > `package.json` contém apenas dependências de desenvolvimento (`vite` e `typescript`). Nada é enviado ao navegador além do código do próprio app.
 
@@ -111,7 +113,11 @@ flowchart LR
 
 ```text
 clima/
+├── .github/
+│   └── workflows/
+│       └── deploy.yml         # CI/CD: build + deploy no GitHub Pages
 ├── index.html                 # toda a interface (markup estático)
+├── vite.config.ts             # base do build para o GitHub Pages
 ├── src/
 │   ├── main.ts                # orquestração, estados e renderização
 │   ├── style.css              # layout, temas e animações
@@ -124,7 +130,7 @@ clima/
 ├── docs/
 │   ├── brain-dump.md          # ideação e decisões iniciais
 │   ├── prd.md                 # requisitos funcionais e técnicos
-│   ├── tasks.md               # 16 tarefas com critérios de aceite
+│   ├── tasks.md               # 17 tarefas com critérios de aceite
 │   └── screenshots/
 ├── public/                    # favicon e ícones
 └── package.json
@@ -201,9 +207,25 @@ A aplicação estará disponível em `http://localhost:5173` (ou na próxima por
 |---|---|
 | `npm run dev` | Inicia o servidor de desenvolvimento com HMR. |
 | `npm run build` | Roda `tsc` (checagem de tipos) e gera o build otimizado em `dist/`. |
-| `npm run preview` | Serve localmente o build de produção. |
+| `npm run preview` | Serve localmente o build de produção em `http://localhost:4173/app-clima/`. |
 
 > Não há variáveis de ambiente nem chave de API: o Open-Meteo é público e não exige autenticação.
+
+---
+
+## Deploy e CI/CD
+
+O deploy é contínuo: todo push em `main` — ou uma execução manual — dispara o workflow [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), que:
+
+1. instala as dependências com `npm ci`;
+2. roda `npm run build` (`tsc` + Vite);
+3. publica o conteúdo de `dist/` no GitHub Pages.
+
+O [`vite.config.ts`](vite.config.ts) define `base: "/app-clima/"` no build, porque o GitHub Pages serve o projeto em um subdiretório. Em desenvolvimento a base continua `/`.
+
+**URL:** https://ivan-teotonio.github.io/app-clima/
+
+> **Primeiro deploy:** em *Settings → Pages → Build and deployment*, selecione **GitHub Actions** como source. Depois rode o workflow em *Actions → Deploy — GitHub Pages → Run workflow* (ou faça um novo push em `main`).
 
 ---
 
@@ -240,7 +262,7 @@ O forecast solicita as variáveis exibidas — `temperature_2m`, `relative_humid
 
 ## Qualidade e validação
 
-O projeto não possui suíte de testes automatizados (está no roadmap). A validação atual combina checagem de tipos e um roteiro manual de aceite:
+O projeto não possui suíte de testes automatizados (está no roadmap). A validação atual combina checagem de tipos, build e um roteiro manual de aceite:
 
 ```bash
 npm run build   # tsc + vite build
@@ -252,7 +274,8 @@ npm run build   # tsc + vite build
 - [x] Campo vazio limpa o resultado e volta ao estado inicial;
 - [x] Tema de fundo e cor de destaque mudam conforme clima e dia/noite;
 - [x] Layout funciona em desktop e mobile;
-- [x] Build de produção conclui sem erros.
+- [x] Build de produção conclui sem erros;
+- [x] Pipeline de CI/CD builda e publica a cada push em `main`.
 
 ---
 
@@ -264,7 +287,7 @@ Este repositório foi desenvolvido com documentação antes e durante o código:
 |---|---|
 | [`docs/brain-dump.md`](docs/brain-dump.md) | Ideação, hipóteses e decisões iniciais. |
 | [`docs/prd.md`](docs/prd.md) | Requisitos funcionais, técnicos, visuais e critérios de aceite. |
-| [`docs/tasks.md`](docs/tasks.md) | 16 tarefas incrementais com critérios de aprovação. |
+| [`docs/tasks.md`](docs/tasks.md) | 17 tarefas incrementais com critérios de aprovação. |
 
 ---
 
@@ -275,7 +298,7 @@ Este repositório foi desenvolvido com documentação antes e durante o código:
 - [ ] Favoritos e histórico de buscas;
 - [ ] Troca de unidades (°C/°F, km/h/mph);
 - [ ] Testes automatizados (Vitest + Playwright);
-- [ ] Deploy contínuo com preview por pull request.
+- [ ] Preview de pull requests com deploy efêmero.
 
 ---
 

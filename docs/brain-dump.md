@@ -179,3 +179,11 @@ Code Description
 85, 86 Snow showers slight and heavy
 95 _ Thunderstorm with slight and heavy hail
 95, 99 _ Thunderstorm with slight and heavy hail
+
+### Deploy e CI/CD
+
+- O projeto é publicado no GitHub Pages automaticamente;
+- Todo push na branch `main` dispara o GitHub Actions;
+- O pipeline instala dependências (`npm ci`), roda o build (`tsc` + Vite) e publica a pasta `dist/`;
+- Como o Pages serve o projeto em um subdiretório, o build usa `base: "/app-clima/"`;
+- Também é possível rodar o workflow manualmente pela aba Actions do GitHub.

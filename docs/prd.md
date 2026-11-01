@@ -139,6 +139,13 @@ Ao submeter o nome da cidade, o sistema deve:
 - O layout deve funcionar em telas mobile e desktop;
 - Card centralizado com largura máxima de **800px** deve se adaptar.
 
+### 4.4. Entrega contínua
+
+- Todo push na branch `main` deve disparar um workflow de CI/CD no GitHub Actions;
+- O pipeline deve instalar dependências com `npm ci`, executar `npm run build` e publicar o conteúdo de `dist/` no GitHub Pages;
+- O site publicado fica em `https://ivan-teotonio.github.io/app-clima/`, com o build usando `base: "/app-clima/"`;
+- O workflow também deve poder ser executado manualmente (`workflow_dispatch`).
+
 ---
 
 ## 5. Requisitos técnicos
@@ -337,6 +344,7 @@ Após uma busca bem-sucedida, o fundo da aplicação e a cor de destaque da temp
 - [x] Durante a busca, exibe loading.
 - [x] Sidebar e área principal seguem o layout visual definido (card branco, max 800px, fundo escuro).
 - [x] Todas as variáveis obrigatórias da API estão sendo exibidas.
+- [x] O build é publicado automaticamente no GitHub Pages a cada push em `main`.
 
 ---
 

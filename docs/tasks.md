@@ -144,3 +144,14 @@
     - [x] Links de documentação e contato válidos.
 
   - Requisito(s) relacionado(s): documentação do projeto (README + screenshots).
+
+- [x] **Task 17 — Configurar CI/CD com GitHub Actions e GitHub Pages**
+
+  - Critério de aprovação:
+    - [x] Workflow disparado em todo push para `main` (e execução manual);
+    - [x] Pipeline executa `npm ci` e `npm run build`;
+    - [x] Build publicado automaticamente no GitHub Pages;
+    - [x] `vite.config.ts` com `base` compatível com o subdiretório do Pages;
+    - [x] README e PRD atualizados com o processo de deploy.
+
+  - Requisito(s) relacionado(s): PRD — seção 4.4 (Entrega contínua).
