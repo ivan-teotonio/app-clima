@@ -7,6 +7,7 @@ const form = document.querySelector<HTMLFormElement>("#search-form");
 const input = document.querySelector<HTMLInputElement>("#city-search");
 const loading = document.querySelector<HTMLElement>("#loading");
 const emptyState = document.querySelector<HTMLElement>("#empty-state");
+const card = document.querySelector<HTMLElement>("#content");
 const sidebarTemperature = document.querySelector<HTMLElement>("#sidebar-temperature");
 const sidebarCityName = document.querySelector<HTMLElement>("#sidebar-city-name");
 const sidebarCountryCode = document.querySelector<HTMLElement>("#sidebar-country-code");
@@ -22,25 +23,34 @@ const weatherInfoWindDirection = document.querySelector<HTMLElement>("#weather-i
 let isLoading = false;
 
 const showLoading = () => {
-  loading?.removeAttribute("hidden");
+  loading?.classList.remove("hidden");
 };
 
 const hideLoading = () => {
-  loading?.setAttribute("hidden", "");
+  loading?.classList.add("hidden");
 };
 
 const showEmptyState = () => {
-  emptyState?.removeAttribute("hidden");
+  emptyState?.classList.remove("hidden");
 };
 
 const hideEmptyState = () => {
-  emptyState?.setAttribute("hidden", "");
+  emptyState?.classList.add("hidden");
 };
 
-// Task 7: exibe o Empty State no carregamento inicial (antes de qualquer busca).
-showEmptyState();
+const showCard = () => {
+  card?.classList.remove("hidden");
+};
 
-/** Exibe os dados do forecast na sidebar e na área principal. */
+const hideCard = () => {
+  card?.classList.add("hidden");
+};
+
+// Estado inicial: Empty State visível e card de dados oculto.
+showEmptyState();
+hideCard();
+
+/** Exibe os dados do forecast na sidebar e na área principal (substitui os placeholders "--"). */
 const renderWeather = (city: GeocodingResult, forecast: ForecastResponse) => {
   const current = forecast.current;
 
@@ -72,30 +82,31 @@ form?.addEventListener("submit", async (event) => {
   try {
     const geocoding = await getCityCoordinates(cityName);
     if (!geocoding) {
+      // Geocoding sem resultados → Empty State e card oculto.
       showEmptyState();
+      hideCard();
       return;
     }
 
     const { latitude, longitude, timezone } = geocoding.results[0];
     const forecast = await getWeather(latitude, longitude, timezone);
     if (!forecast) {
+      // Forecast sem dados → Empty State e card oculto.
       showEmptyState();
+      hideCard();
       return;
     }
 
+    // Sucesso → oculta o Empty State, revela o card e injeta os dados reais.
     hideEmptyState();
+    showCard();
     renderWeather(geocoding.results[0], forecast);
   } catch {
-    // Task 9: falhas no fluxo (geocoding/forecast sem dados ou erro inesperado)
-    // convergem para o Empty State, sem exibir erro técnico ao usuário.
+    // Falhas no fluxo convergem para o Empty State, sem erro técnico ao usuário.
     showEmptyState();
+    hideCard();
   } finally {
     isLoading = false;
     hideLoading();
   }
-});
-
-input?.addEventListener("input", () => {
-  // A lógica de estado da busca será integrada nas próximas tasks
-  // (Task 9 — tratamento de erros).
 });
