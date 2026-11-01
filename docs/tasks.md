@@ -1,6 +1,6 @@
 # Tasks — Aplicativo Clima
 
-- **Status:** em andamento
+- **Status:** concluído (MVP)
 - **Base:** `docs/prd.md`
 - **Regra:** cada task abaixo deve ser implementada de forma **progressiva** (uma de cada vez) por agentes de IA.
 - **Convenção:** para não duplicar informações, cada task deve seguir os requisitos do PRD indicado e, caso precise de ajuste de escopo, a alteração deve ser registrada no PRD antes.
@@ -135,3 +135,12 @@
     - [x] Submeter o campo vazio limpa o resultado exibido e volta ao estado inicial.
 
   - Requisito(s) relacionado(s): PRD — UC-02 / RF-02 (seção 3.2).
+
+- [x] **Task 16 — Documentar o projeto para portfólio (README + screenshots)**
+
+  - Critério de aprovação:
+    - [x] README com visão geral, funcionalidades, stack, arquitetura, execução e links;
+    - [x] Capturas de tela reais do app (desktop, mobile e empty state) em `docs/screenshots/`;
+    - [x] Links de documentação e contato válidos.
+
+  - Requisito(s) relacionado(s): documentação do projeto (README + screenshots).
