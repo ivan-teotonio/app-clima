@@ -60,11 +60,11 @@
 
   - Requisito(s) relacionado(s): PRD — RF-02 (seção 3.2).
 
-- [ ] **Task 7 — Implementar Empty State (estado inicial e cidade não encontrada)**
+- [x] **Task 7 — Implementar Empty State (estado inicial e cidade não encontrada)**
 
   - Critério de aprovação:
-    - [ ] Empty State exibido no carregamento inicial;
-    - [ ] Empty State exibido quando a cidade não é encontrada ou não há dados.
+    - [x] Empty State exibido no carregamento inicial;
+    - [x] Empty State exibido quando a cidade não é encontrada ou não há dados.
 
   - Requisito(s) relacionado(s): PRD — UC-02 / RF-02 (seção 3.2).
 

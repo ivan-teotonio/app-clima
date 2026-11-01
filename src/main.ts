@@ -4,6 +4,7 @@ import { getCityCoordinates, getWeather } from "./services/open-meteo";
 const form = document.querySelector<HTMLFormElement>("#search-form");
 const input = document.querySelector<HTMLInputElement>("#city-search");
 const loading = document.querySelector<HTMLElement>("#loading");
+const emptyState = document.querySelector<HTMLElement>("#empty-state");
 
 let isLoading = false;
 
@@ -14,6 +15,13 @@ const showLoading = () => {
 const hideLoading = () => {
   loading?.setAttribute("hidden", "");
 };
+
+const showEmptyState = () => {
+  emptyState?.removeAttribute("hidden");
+};
+
+// Task 7: exibe o Empty State no carregamento inicial (antes de qualquer busca).
+showEmptyState();
 
 form?.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -26,10 +34,16 @@ form?.addEventListener("submit", async (event) => {
 
   try {
     const geocoding = await getCityCoordinates(cityName);
-    if (!geocoding) return;
+    if (!geocoding) {
+      showEmptyState();
+      return;
+    }
 
     const { latitude, longitude, timezone } = geocoding.results[0];
-    await getWeather(latitude, longitude, timezone);
+    const forecast = await getWeather(latitude, longitude, timezone);
+    if (!forecast) {
+      showEmptyState();
+    }
   } finally {
     isLoading = false;
     hideLoading();
@@ -38,5 +52,5 @@ form?.addEventListener("submit", async (event) => {
 
 input?.addEventListener("input", () => {
   // A lógica de estado da busca será integrada nas próximas tasks
-  // (Task 7 — empty state, Task 8 — exibição de dados).
+  // (Task 8 — exibição de dados).
 });
