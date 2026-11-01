@@ -59,3 +59,34 @@
 .empty-state[hidden] {
   display: none;
 }
+
+/* Task 10 — Layout visual completo */
+body {
+  background-color: #333;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border-radius: 16px;
+}
+
+@media (min-width: 640px) {
+  .content {
+    flex-direction: row;
+  }
+}
+
+.sidebar {
+  flex: 1;
+}
+
+.weather-info {
+  flex: 2;
+}

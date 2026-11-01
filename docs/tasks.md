@@ -85,13 +85,13 @@
 
   - Requisito(s) relacionado(s): PRD — RF-02 (seção 3.2).
 
-- [ ] **Task 10 — Implementar layout visual completo**
+- [x] **Task 10 — Implementar layout visual completo**
 
   - Critério de aprovação:
-    - [ ] Fundo cinza escuro aplicado;
-    - [ ] Área superior sem background, com busca centralizada;
-    - [ ] Card branco com borda bem arredondada, centralizado, largura máxima 800px;
-    - [ ] Sidebar (esquerda) e área principal (direita) renderizadas conforme PRD.
+    - [x] Fundo cinza escuro aplicado;
+    - [x] Área superior sem background, com busca centralizada;
+    - [x] Card branco com borda bem arredondada, centralizado, largura máxima 800px;
+    - [x] Sidebar (esquerda) e área principal (direita) renderizadas conforme PRD.
 
   - Requisito(s) relacionado(s): PRD — seção 6 (Instruções visuais).
 
