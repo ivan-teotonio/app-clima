@@ -85,6 +85,10 @@ form?.addEventListener("submit", async (event) => {
 
     hideEmptyState();
     renderWeather(geocoding.results[0], forecast);
+  } catch {
+    // Task 9: falhas no fluxo (geocoding/forecast sem dados ou erro inesperado)
+    // convergem para o Empty State, sem exibir erro técnico ao usuário.
+    showEmptyState();
   } finally {
     isLoading = false;
     hideLoading();

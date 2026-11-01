@@ -77,11 +77,11 @@
 
   - Requisito(s) relacionado(s): PRD — RF-03 (seção 3.3).
 
-- [ ] **Task 9 — Implementar tratamento de erros do fluxo de busca**
+- [x] **Task 9 — Implementar tratamento de erros do fluxo de busca**
 
   - Critério de aprovação:
-    - [ ] Fluxo de falha (geocoding sem resultado / forecast sem dados) converge para o Empty State;
-    - [ ] Usuário nunca visualiza erro técnico bruto.
+    - [x] Fluxo de falha (geocoding sem resultado / forecast sem dados) converge para o Empty State;
+    - [x] Usuário nunca visualiza erro técnico bruto.
 
   - Requisito(s) relacionado(s): PRD — RF-02 (seção 3.2).
 
